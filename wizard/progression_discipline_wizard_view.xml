@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="student_progress_discipline_wizad_form">
+            <field name="name">Discipline Progress Wizard</field>
+            <field name="model">discipline.progress.wizard</field>
+            <field name="arch" type="xml">
+                <form string="student discipline progress wizard ">
+                    <group col="2" colspan="2">
+                        <field name="student_id" invisible="True"/>
+                        <field name="discipline_ids" widget="many2many_lines" domain="[('student_id', '=', student_id)]"/>
+                    </group>
+                    <footer>
+                        <span groups="base.group_user">
+                            <button string="Add"
+                                    type="object" name="Add_discipline" class="oe_highlight"/>
+                            <button special="cancel" string="Close"
+                                    type="object"/>
+                        </span>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="act_win_progress_discipline_wizard_action"
+                    name="Add Discipline"
+                    binding_model="op.student.progression"
+                    res_model="discipline.progress.wizard"
+                    view_mode="form" target="new"/>
+    </data>
+</odoo>
